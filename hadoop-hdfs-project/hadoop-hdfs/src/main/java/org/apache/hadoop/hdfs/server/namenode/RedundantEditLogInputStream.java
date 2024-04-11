@@ -190,11 +190,11 @@ class RedundantEditLogInputStream extends EditLogInputStream {
             }
             streams[curIdx].skipUntil(prevTxId + 1);
           }
+          state = State.OK;
         } catch (IOException e) {
           prevException = e;
           state = State.STREAM_FAILED;
         }
-        state = State.OK;
         break;
       case OK:
         try {
